@@ -77,4 +77,9 @@ public class LibraryService {
     public Book findBookId(int bookId) {
         return null;
     }
+
+    public Book removeBook(int i) {
+        return null;
+    }
+
 }// end
