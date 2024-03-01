@@ -99,7 +99,6 @@ public class BookRepository {
     }
 
 
-
     // Показывает есть ли такая книга в наличии
     public void markBookUnAvailable(int bookId) {
         Book book = findBookId(bookId);
