@@ -74,5 +74,7 @@ public class LibraryService {
         return bookRepository.getAllBorrowedBooks();
     }
 
-
+    public Book findBookId(int bookId) {
+        return null;
+    }
 }// end
