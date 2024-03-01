@@ -64,5 +64,7 @@ public class LibraryService {
     }
 
 
-
+    public Book findBookId(int bookId) {
+        return null;
+    }
 }// end
