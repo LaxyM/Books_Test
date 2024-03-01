@@ -21,7 +21,7 @@ public class BookRepository {
         Book book1 = new Book(currentId.getAndIncrement(), "To Kill a Mockingbird", "Harper Lee");
         Book book2 = new Book(currentId.getAndIncrement(), "The Great Gatsby", "F. Scott Fitzgerald");
         Book book3 = new Book(currentId.getAndIncrement(), "1918", "George Orwell");
-        Book book4 = new Book(currentId.getAndIncrement(), "The Catcher in the Rye", " J.D. Salinger");
+        Book book4 = new Book(currentId.getAndIncrement(), "The Catcher in the Rye", "J.D. Salinger");
         books.addAll(book, book1, book2, book3, book4);
     }
 
@@ -113,6 +113,13 @@ public class BookRepository {
         if (book != null) {
             book.setAvailable(true);
         }
+    }
+
+    public Book removeBook(int bookId) {
+        Book book = findBookId(bookId);
+        if (book != null) {
+            books.remove(book);
+        } return book;
     }
 
 
