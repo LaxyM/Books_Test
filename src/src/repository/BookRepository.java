@@ -99,7 +99,6 @@ public class BookRepository {
     }
 
 
-
     // Показывает есть ли такая книга в наличии
     public void markBookUnAvailable(int bookId) {
         Book book = findBookId(bookId);
@@ -121,6 +120,31 @@ public class BookRepository {
         if (book != null) {
             books.remove(book);
         } return book;
+    }
+
+
+    // Выводит список всех книг которые есть в наличии
+    public MyList<Book> getAllFreeBooks() {
+        MyList<Book> freeBooks = new MyArrayList<>();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.isAvailable()) {
+                freeBooks.add(book);
+            }
+        }
+        return freeBooks;
+    }
+
+    // Выводит список всех книг которых нет в наличии
+    public MyList<Book> getAllBorrowedBooks() {
+        MyList<Book> borrowedBooks = new MyArrayList<>();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (!book.isAvailable()) {
+                borrowedBooks.add(book);
+            }
+        }
+        return borrowedBooks;
     }
 
 
