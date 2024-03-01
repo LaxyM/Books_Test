@@ -3,6 +3,7 @@ package src.service;
 
 import src.model.Book;
 import src.repository.BookRepository;
+import src.util.MyArrayList;
 import src.util.MyList;
 
 public class LibraryService {
@@ -18,7 +19,7 @@ public class LibraryService {
     }
 
 
-    // Проверяет если книга, если нет - то добавляет
+    // Проверяет есть ли книга, если нет - то добавляет
     public Book addBook(String nameBook, String nameAuthor) {
         boolean isExist = bookRepository.isBookExist(nameBook, nameAuthor);
         if (isExist) {
@@ -63,6 +64,15 @@ public class LibraryService {
         }
     }
 
+    // Выводит список всех книг которые есть в наличии
+    public MyList<Book> getAllFreeBooks() {
+        return bookRepository.getAllFreeBooks();
+    }
+
+    // Выводит список всех книг которых нет в наличии
+    public MyList<Book> getAllBorrowedBooks() {
+        return bookRepository.getAllBorrowedBooks();
+    }
 
 
 }// end

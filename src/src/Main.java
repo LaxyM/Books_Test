@@ -5,7 +5,7 @@ import src.model.Book;
 import src.repository.BookRepository;
 import src.service.LibraryService;
 import src.util.MyList;
-;
+
 
 import java.util.Scanner;
 
@@ -30,10 +30,12 @@ public class Main {
             System.out.println("4. Borrow a Book");
             System.out.println("5. Return a Book");
             System.out.println("6. View All Books");
-            System.out.println("7. Exit");
+            System.out.println("7. View All Free Books");
+            System.out.println("8. View All Borrowed Books");
+            System.out.println("9. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline character
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -61,6 +63,9 @@ public class Main {
                     displayBooks(booksByAuthor);
                     break;
                 case 4:
+                    MyList<Book> getFreeBooks = libraryService.getAllFreeBooks();
+                    System.out.println("All Free Books");
+                    displayBooks(getFreeBooks);
                     System.out.print("Enter book ID to borrow: ");
                     int borrowId = scanner.nextInt();
                     libraryService.borrowBook(borrowId);
@@ -76,12 +81,21 @@ public class Main {
                     displayBooks(allBooks);
                     break;
                 case 7:
+                    MyList<Book> freeBooks = libraryService.getAllFreeBooks();
+                    System.out.println("All Free Books");
+                    displayBooks(freeBooks);
+                    break;
+                case 8:
+                    MyList<Book> borrowedBooks = libraryService.getAllBorrowedBooks();
+                    System.out.println("All Borrowed Books");
+                    displayBooks(borrowedBooks);
+                case 9:
                     System.out.println("Exiting the Library. Goodbye!");
                     break;
                 default:
-                    System.out.println("Invalid choice. Please enter a number between 1 and 7.");
+                    System.out.println("Invalid choice. Please enter a number between 1 and 9.");
             }
-        } while (choice != 7);
+        } while (choice != 9);
 
         scanner.close();
     }
