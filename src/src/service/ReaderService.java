@@ -89,37 +89,11 @@ public class ReaderService {
     }
 
     public Reader registerNewReader(String email, String password) {
-        if (email == null || password == null) {
-            System.out.println("E-mail and password fields must be filled out");
-            return null;
-        }
-        if (readerRepository.isReaderEmailExist(email)) {
-            System.out.println("The e-mail already exists");
-            return null;
-        }
-        if (isEmailValid(email) && isPasswordValid(password)) {
-            Reader reader = readerRepository.addNewReader(email, password);
-            return reader;
-        } else {
-            System.out.println("Invalid e-mail or password. Please try again.");
-            return null;
-        }
+        Reader reader = readerRepository.addNewReader(email, password);
+        return reader;
     }
 
     public Reader authoriseReader(String email, String password) {
-        if (email == null || password == null) {
-            System.out.println("E-mail and password fields must be filled out");
-            return null;
-        }
-        if (!isEmailValid(email) || !isPasswordValid(password)) {
-            System.out.println("Invalid e-mail or password. Please try again.");
-            return null;
-        }
-        if (!readerRepository.isReaderEmailExist(email)) {
-            System.out.println("The e-mail is not found");
-            return null;
-        }
-        System.out.println("Authorisation completed successfully");
         Reader reader = activeReader;
         return reader;
     }
