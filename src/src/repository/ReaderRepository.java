@@ -12,7 +12,7 @@ public class ReaderRepository {
     private final MyList<Reader> readers;
     private final AtomicInteger currentId = new AtomicInteger(1);
 
-    public ReaderRepository(MyList<Reader> readers) {
+    public ReaderRepository() {
         this.readers = new MyArrayList<>();
         initReaders();
     }
@@ -63,4 +63,10 @@ public class ReaderRepository {
     }
 
 
+    public boolean isReaderPasswordExist(String password) {
+        for (int i = 0; i < readers.size(); i++) {
+            if (readers.get(i).getPassword().equals(password)) return true;
+        }
+        return false;
+    }
 }
